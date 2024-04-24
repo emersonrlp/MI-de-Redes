@@ -1,10 +1,9 @@
 from flask import Flask, jsonify, request
-import threading
 import os
 import requests
 
-url = "http://127.0.0.1:8081/sensores"
-url_solicitacoes = "http://127.0.0.1:8081/solicitacoes"
+url = "http://192.168.1.106:8081/sensores"
+url_solicitacoes = "http://192.168.1.106:8081/solicitacoes"
 
 def menu():
     global url_solicitacoes
@@ -61,7 +60,7 @@ def menu():
         limpar_terminal()
 
 def obter_lista_sensores():
-    url = "http://127.0.0.1:8081/sensores"
+    url = "http://192.168.1.106:8081/sensores"
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()

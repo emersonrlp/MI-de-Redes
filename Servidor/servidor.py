@@ -196,7 +196,7 @@ def main():
         tcp_thread.start()
 
         # Inicia a aplicação Flask
-        app.run(port=8081, debug=True)
+        app.run(host='0.0.0.0', port=8081, debug=True)
 
     except Exception as e:
         print('Erro:', e)
