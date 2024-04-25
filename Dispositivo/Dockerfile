@@ -5,11 +5,11 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copie os arquivos necessários para o contêiner
-COPY servidor.py .
+COPY dispositivo.py .
 COPY requirements.txt .
 
 # Instale as dependências (se aplicável)
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Defina o comando de inicialização
-CMD ["python", "servidor.py"]
+CMD ["python", "dispositivo.py"]
