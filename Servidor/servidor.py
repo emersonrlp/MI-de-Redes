@@ -38,7 +38,11 @@ def broker():
     
     while True:
         client, addr = server_tcp.accept()
-        if addr[0] not in enderecos:
+        if addr[0] in enderecos:
+            indice = enderecos.index(addr[0])
+            clients[indice] = client
+            
+        else:
             clients.append(client)
             enderecos.append(addr[0])
             id +=1
@@ -70,7 +74,7 @@ def receber_udp(server_udp):
                 response = requests.put(url_sensor, json=dados_atualizados)
         print('\nConectado por UDP:', addr_udp)
         print('Mensagem recebida do cliente UDP:', data_udp.decode())
-        time.sleep(3)
+        time.sleep(0.5)
 def tratamento_mensagens(client, endereco):
     while True:
         try:
@@ -85,8 +89,9 @@ def tratamento_mensagens(client, endereco):
                     enviar_tcp(entrada_bytes, num, endereco)
                     remover_sensor(1)
                 except Exception as e:
+                    remover_sensor(1)
                     print("", e)
-            time.sleep(3)
+            time.sleep(0.5)
         except:
             deleteClient(client)
             enderecos.remove(endereco)

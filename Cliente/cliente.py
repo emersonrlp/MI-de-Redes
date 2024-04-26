@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import os
 import requests
 
-ip = '172.16.103.12'
+ip = '192.168.1.105'
 url = f"http://{ip}:8081/sensores"
 url_solicitacoes = f"http://{ip}:8081/solicitacoes"
 
@@ -19,15 +19,19 @@ def menu():
                     break
                 elif num1 == 1:
                     # Exemplo de uso
-                    sensores = obter_lista_sensores()
-                    if sensores is not None:
-                        limpar_terminal()
-                        print("----------------------------------------------------------------------------\n                            Lista de Sensores\n----------------------------------------------------------------------------")
-                        for i in sensores:
-                            print(f"       {i}")
-                        print("----------------------------------------------------------------------------\n")
-                        input("Precione enter para voltar ao menu!")
-                        limpar_terminal()
+                    try:
+                        sensores = obter_lista_sensores()
+                        if sensores is not None:
+                            limpar_terminal()
+                            print("----------------------------------------------------------------------------\n                            Lista de Sensores\n----------------------------------------------------------------------------")
+                            for i in sensores:
+                                print(f"       {i}")
+                            print("----------------------------------------------------------------------------\n")
+                            input("Precione enter para voltar ao menu!")
+                            limpar_terminal()
+                    except Exception as e:
+                        print("Broker desconectado!")
+                        input("\nPrecione enter para voltar ao menu!") 
                 else:
                     limpar_terminal()
                     print("Entrada fora do intervalo. Por favor, digite um número inteiro de 1 a 4.")
@@ -47,25 +51,38 @@ def menu():
                 limpar_terminal()
             
         if num1 == 2:
-            sensores = obter_lista_sensores()
-            for i in sensores:
-                if i["id"] == num2:
-                    print(f"\nTemperatura do {num2}° sensor = {i['temperatura']}")
-                    input("\nPrecione enter para voltar ao menu!")
+            try:
+                sensores = obter_lista_sensores()
+                for i in sensores:
+                    if i["id"] == num2:
+                        print(f"\nTemperatura do {num2}° sensor = {i['temperatura']}")
+                        input("\nPrecione enter para voltar ao menu!")
+            except Exception as e:
+                print("Broker desconectado!")
+                input("\nPrecione enter para voltar ao menu!") 
         elif num1 == 3:
-            # Dados do novo sensor a serem enviados
-            novo_sensor = {"id": "", "num": num2, "Comando": 'desligar'}  # Suponha que você está adicionando um novo sensor com ID 4
+            try:
+                # Dados do novo sensor a serem enviados
+                novo_sensor = {"id": "", "num": num2, "Comando": 'desligar'}  # Suponha que você está adicionando um novo sensor com ID 4
 
-        # Enviar uma solicitação POST para a API Flask para criar o novo sensor
-            response = requests.post(url_solicitacoes, json=novo_sensor)
+                # Enviar uma solicitação POST para a API Flask para criar o novo sensor
+                response = requests.post(url_solicitacoes, json=novo_sensor)
+            except Exception as e:
+                print("Broker desconectado!")   
+                input("\nPrecione enter para voltar ao menu!") 
         else:
-            # Dados do novo sensor a serem enviados
-            novo_sensor = {"id": "", "num": num2, "Comando": 'ligar'}  # Suponha que você está adicionando um novo sensor com ID 4
+            try:
+                # Dados do novo sensor a serem enviados
+                novo_sensor = {"id": "", "num": num2, "Comando": 'ligar'}  # Suponha que você está adicionando um novo sensor com ID 4
 
-        # Enviar uma solicitação POST para a API Flask para criar o novo sensor
-            response = requests.post(url_solicitacoes, json=novo_sensor)
-        limpar_terminal()
-
+            # Enviar uma solicitação POST para a API Flask para criar o novo sensor
+                response = requests.post(url_solicitacoes, json=novo_sensor)
+                
+                limpar_terminal()
+            except Exception as e:
+                print("Broker desconectado!")
+                input("\nPrecione enter para voltar ao menu!")
+                
 def obter_lista_sensores():
     global url
     response = requests.get(url)
@@ -73,6 +90,7 @@ def obter_lista_sensores():
         return response.json()
     else:
         print("Erro ao obter a lista de sensores:", response.status_code)
+        input("\nPrecione enter para voltar ao menu!") 
         return None
 
 def limpar_terminal():
