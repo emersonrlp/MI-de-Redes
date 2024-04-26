@@ -32,12 +32,13 @@ def menu():
                     except Exception as e:
                         print("Broker desconectado!")
                         input("\nPrecione enter para voltar ao menu!") 
+                        limpar_terminal()
                 else:
                     limpar_terminal()
-                    print("Entrada fora do intervalo. Por favor, digite um número inteiro de 1 a 4.")
+                    print("\nEntrada fora do intervalo. Por favor, digite um número inteiro de 1 a 4.")
             except ValueError:
                 limpar_terminal()
-                print("Entrada inválida. Por favor, digite um número inteiro de 1 a 4 ou 4 para sair.")
+                print("\nEntrada inválida. Por favor, digite um número inteiro de 1 a 4 ou 4 para sair.")
         
         while True:
             try:
