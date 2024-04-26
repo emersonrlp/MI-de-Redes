@@ -5,7 +5,7 @@ import threading
 import os
 
 # Configurações do servidor
-HOST = '192.168.1.105'  # Endereço IP do servidor
+HOST = '192.168.1.106'  # Endereço IP do servidor
 PORT = 7777             # Porta a ser usada
 UDP_PORT = 7778         # Porta UDP
 MESSAGE = b'Hello, TCP Server!'
@@ -69,6 +69,9 @@ def entrada():
     global can_send
     while True:
         user_input = input("Digite 'ligar' para ligar ou 'desligar' para desligar: \n")
+        while user_input != 'ligar' and user_input != 'desligar':
+            limpar_terminal()
+            user_input = input("Digite 'ligar' para ligar ou 'desligar' para desligar: \n")
         if user_input.lower() == 'ligar':
             can_send = True
             print("Servidor ligando...")
