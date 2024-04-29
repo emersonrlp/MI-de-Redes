@@ -67,7 +67,7 @@ def menu():
                 novo_sensor = {"id": "", "num": num2, "Comando": 'desligar'}  # Suponha que você está adicionando um novo sensor com ID 4
 
                 # Enviar uma solicitação POST para a API Flask para criar o novo sensor
-                response = requests.post(url_solicitacoes, json=novo_sensor)
+                response = requests.post(url_solicitacoes, json=novo_sensor, timeout=1)
             except Exception as e:
                 print("Broker desconectado!")   
                 input("\nPrecione enter para voltar ao menu!") 
@@ -77,7 +77,7 @@ def menu():
                 novo_sensor = {"id": "", "num": num2, "Comando": 'ligar'}  # Suponha que você está adicionando um novo sensor com ID 4
 
             # Enviar uma solicitação POST para a API Flask para criar o novo sensor
-                response = requests.post(url_solicitacoes, json=novo_sensor)
+                response = requests.post(url_solicitacoes, json=novo_sensor, timeout=1)
                 
                 limpar_terminal()
             except Exception as e:
@@ -86,7 +86,7 @@ def menu():
                 
 def obter_lista_sensores():
     global url
-    response = requests.get(url)
+    response = requests.get(url,timeout=1)
     if response.status_code == 200:
         return response.json()
     else:

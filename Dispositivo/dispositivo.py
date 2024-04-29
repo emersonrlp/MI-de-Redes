@@ -43,27 +43,30 @@ def receber_mensagem_tcp():
             time.sleep(2)
             print('Erro : ', e)
             limpar_terminal()
+            print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
 
 def enviar_mensagem_udp():
     global can_send
-    try:
-        # Criação do socket UDP
-        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp_socket:
-            while True:
-                if can_send == True:
-                    temperature = generate_temperature()
-                    MESSAGE = str(temperature) + '°'
-                else:
-                    MESSAGE = 'Sensor desligado'
-                
-                # Envia mensagem para o servidor
-                udp_socket.sendto(MESSAGE.encode(), (HOST, UDP_PORT))
-                #print('Mensagem enviada com sucesso via UDP')
-                time.sleep(0.5)
-    except Exception as e:
-        print('Erro ao enviar mensagem UDP:', e)
-        time.sleep(3)
-        limpar_terminal()
+    while True:
+        try:
+            # Criação do socket UDP
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp_socket:
+                while True:
+                    if can_send == True:
+                        temperature = generate_temperature()
+                        MESSAGE = str(temperature) + '°'
+                    else:
+                        MESSAGE = 'Sensor desligado'
+                    
+                    # Envia mensagem para o servidor
+                    udp_socket.sendto(MESSAGE.encode(), (HOST, UDP_PORT))
+                    #print('Mensagem enviada com sucesso via UDP')
+                    time.sleep(0.5)
+        except Exception as e:
+            print('Erro ao enviar mensagem UDP:', e)
+            time.sleep(3)
+            limpar_terminal()
+            print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
 
 def entrada():
     global can_send
