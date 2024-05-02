@@ -42,8 +42,8 @@
             <li><strong>enviar_tcp()</strong>, responsável por enviar a mensagem tcp ao dispositivo escolhido.</li>
             <li><strong>delete_cliente()</strong>, responsável por deletar um cliente da lista de clientes.</li>
         </ul>
-    <h4>API<h4>
-        <p>Segue as funções referentes a parte da API no <strong>broker.py</strong></p>
+    <h4>API</h4>
+        <p>Segue as funções referentes a parte da API no <strong>'broker.py'</strong></p>
         <ul>
             <li><strong>get_sensores()</strong>, responsável por retornar os dados e todos os sensores registrados na sua aplicação.</li>
             <li><strong>get_sensor()</strong>, responsável por retornar os dados de um sensor expecífico registrado na aplicação.</li>
