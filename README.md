@@ -25,7 +25,27 @@
             </div>
         </ol>
     <h3>Comunicação Cliente-Broker</h3>
-    Para a comunicação entre o cliente e o broker foi utilizado uma API RESTful que possui uma rota para os sensores <strong>http://localhost:8081/sensores</strong> e uma rota para as solicitações <strong>http://localhost:8081/sensores</strong>, cada uma delas possui um método <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong> e <strong>DELETE</strong> para fazer possíveis alterações nelas.
+    Para a comunicação entre o cliente e o broker foi utilizada uma API RESTful que possui uma rota para os sensores <strong>http://localhost:8081/sensores</strong> e uma rota para as solicitações <strong>http://localhost:8081/solicitacoes</strong>, cada uma delas possui um método <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong> e <strong>DELETE</strong> para fazer possíveis alterações.
+    <h4>Sobre os Métodos</h4>
+        <ul>
+            <p>-<strong>POST</strong>, método responsável por criar um item na rota expecíficada.</p>
+            <p>-<strong>GET</strong>, método responsável por pegar um item na rota expecíficada.</p>
+            <p>-<strong>PUT</strong>, método responsável por atualizar um item na rota expecíficada.</p>
+            <p>-<strong>DELETE</strong>, método responsável por deletar um item na rota expecíficada.</p>
+        </ul>
+    <p><strong>Obs.:</strong> para testar se as rotas estavam funcionando foi utilizado o software Insomnia.</p>
+    <br>
+    <p>Os dados salvos nessas rotas são guardados no formato parecido com o de um dicionário, possuindo chave:valor.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-03%20165615.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Exemplo do Formato</figcaption>
+            </figure>
+        </div>
+    <br>
+    <p>Basicamente o que é feito quando chega um dado novo ao broker pelo dispositivo é que o dado é atualizado de acordo com o endereço IP do dispositivo no dicionário, para que o cliente possua o dado mais atualizado caso solicite esse dado por solicitação pela rota <strong>http://localhost:8081/sensores</strong>, já quando o cliente manda uma solicitação para a rota <strong>http://localhost:8081/solicitacoes</strong>, ela é verificada pelo broker e então repassada para o dispositivo solicitado.</p>
     <h3>Comunicação Dispositivo-Broker</h3>
     <h2>Sobre o Projeto</h2>
     <h3>Cliente</h3>
