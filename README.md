@@ -31,18 +31,18 @@
     <h3>Broker</h3>
     <p>Diferente dos demais, o <strong>'broker.py'</strong> guarda a parte referente ao Servidor para lidar com a comunicação com os dispositivos e a parte da API para poder pegar requisições dos clientes e subir dados para que o cliente possa acessá-los</p>
     <ul>
-    <h4>Servidor</h4>
-        <p>Segue as funções referentes a parte do servidor no <strong>'broker.py'</strong></p>
-        <ul>
-            <li><strong>broker()</strong>, responsável por iniciar o servidor TCP e aceitar conexões dos dispositivos.</li>
-            <li><strong>receber_udp()</strong>, responsável por receber os dados dos dispositivos e manter eles atualizados no dicionário da API.</li>
-            <li><strong>tratamento_mensagens()</strong>, responsável por verificar se tem alguma solicitação pendente de um cliente para um dispositivo para repassá-lo ao dispositivo.</li>
-            <li><strong>remover_solicitação()</strong>, responsável por remover uma solicitação no dicionário da API.</li>
-            <li><strong>obter_lista_solicitações()</strong>, responsável por pegar a lista de dicionários da API.</li>
-            <li><strong>enviar_tcp()</strong>, responsável por enviar a mensagem tcp ao dispositivo escolhido.</li>
-            <li><strong>delete_cliente()</strong>, responsável por deletar um cliente da lista de clientes.</li>
-        </ul>
-    <h4>API</h4>
+    <h3>Servidor</h3>
+            <p>Segue as funções referentes a parte do servidor no <strong>'broker.py'</strong></p>
+            <ul>
+                <li><strong>broker()</strong>, responsável por iniciar o servidor TCP e aceitar conexões dos dispositivos.</li>
+                <li><strong>receber_udp()</strong>, responsável por receber os dados dos dispositivos e manter eles atualizados no dicionário da API.</li>
+                <li><strong>tratamento_mensagens()</strong>, responsável por verificar se tem alguma solicitação pendente de um cliente para um dispositivo para repassá-lo ao dispositivo.</li>
+                <li><strong>remover_solicitação()</strong>, responsável por remover uma solicitação no dicionário da API.</li>
+                <li><strong>obter_lista_solicitações()</strong>, responsável por pegar a lista de dicionários da API.</li>
+                <li><strong>enviar_tcp()</strong>, responsável por enviar a mensagem tcp ao dispositivo escolhido.</li>
+                <li><strong>delete_cliente()</strong>, responsável por deletar um cliente da lista de clientes.</li>
+            </ul>
+    <h3>API</h3>
         <p>Segue as funções referentes a parte da API no <strong>'broker.py'</strong></p>
         <ul>
             <li><strong>get_sensores()</strong>, responsável por retornar os dados e todos os sensores registrados na sua aplicação.</li>
