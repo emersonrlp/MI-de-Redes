@@ -68,6 +68,7 @@
       <li>digite <strong>'docker images'</strong> para ver se as imagens docker foram criadas com sucesso</li>
       <li>por fim, execute o programa usando o comando <strong>'docker run --network='host' -it nome_da_imagem'</strong> para executar as três imagens criadas</li>
    </ul>
-  <p>tendo feito isso, é possível fazer solicitações por meio do cliente via CLI pedindo para que forneça a temperatura, desligue ou ligue um determinado dispositivo.</p>
+  <p>tendo feito isso, é possível fazer solicitações por meio do cliente via CLI pedindo para que forneça a temperatura, desligue ou ligue um determinado dispositivo.</p>    
+    <p><strong>Obs.:</strong> é necessário ter o docker instalado na máquina que deseja executar o código.</p>
 </body>
 </html>
