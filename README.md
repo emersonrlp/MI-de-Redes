@@ -47,6 +47,10 @@
     <br>
     <p>Basicamente o que é feito quando chega um dado novo ao broker pelo dispositivo é que o dado é atualizado de acordo com o endereço IP do dispositivo no dicionário, para que o cliente possua o dado mais atualizado caso solicite esse dado por solicitação pela rota <strong>http://localhost:8081/sensores</strong>, já quando o cliente manda uma solicitação para a rota <strong>http://localhost:8081/solicitacoes</strong>, ela é verificada pelo broker e então repassada para o dispositivo solicitado.</p>
     <h3>Comunicação Dispositivo-Broker</h3>
+        <p>Para a comunicação entre o dispositivo e o broker foi utilizados dois protocolos, o TCP para envio de comandos/solicitações do broker para o dispositivo e o UDP para envio de dados do dispositivo para o broker.</p>
+        <p>Mas, para que utilizar dois protocolos diferentes?</p>
+        <p><strong>TCP</strong>, o protocolo de comunicação TCP foi utilizado no projeto para o envio de comandos/solicitações para os dispositivos porque é necessário garantir que aqueles dados foram entregues com sucesso, o que não é garantido pelo protocolo UDP.</p>
+        <p><strong>UDP</strong>, o protocolo de comunicação UDP foi utilizado no projeto porque é preciso mandar dados do dispositivo para o broker de maneira rápida e periódica sem se importar tanto se o dado chegou inteiro, já que será enviado novamente em seguida.</p>
     <h2>Sobre o Projeto</h2>
     <h3>Cliente</h3>
     <p>Segue as funções contidas no <strong>'cliente.py'</strong></p></p>
