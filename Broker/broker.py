@@ -78,7 +78,7 @@ def receber_udp(server_udp):
 def tratamento_mensagens(client, endereco):
     while True:
         try:
-            solicitacoes = obter_lista_sensores()
+            solicitacoes = obter_lista_solicitacoes()
             if len(solicitacoes) > 0:
                 solicitacao = solicitacoes[0]
                 num = solicitacao["num"]
@@ -87,17 +87,17 @@ def tratamento_mensagens(client, endereco):
                 entrada_bytes = msg.encode('utf-8')
                 try:
                     enviar_tcp(entrada_bytes, num, endereco)
-                    remover_sensor(1)
+                    remover_solicitacao(1)
                 except Exception as e:
-                    remover_sensor(1)
+                    remover_solicitacao(1)
                     print("", e)
             time.sleep(0.5)
         except:
-            deleteClient(client)
+            deleteCliente(client)
             enderecos.remove(endereco)
             break
 
-def remover_sensor(solicitacoes_id):
+def remover_solicitacao(solicitacoes_id):
     url = f"http://127.0.0.1:8081/solicitacoes/{solicitacoes_id}"
     response = requests.delete(url)
     if response.status_code == 200:
@@ -105,7 +105,7 @@ def remover_sensor(solicitacoes_id):
     else:
         print("Erro ao remover o sensor:", response.status_code)
 
-def obter_lista_sensores():
+def obter_lista_solicitacoes():
     url_solicitacoes = "http://127.0.0.1:8081/solicitacoes"
     response = requests.get(url_solicitacoes)
     if response.status_code == 200:
@@ -119,11 +119,11 @@ def enviar_tcp(msg, num, endereco):
     try:
         clients[num - 1].send(msg)
     except:
-        deleteClient(clients[num -1])
+        deleteCliente(clients[num -1])
         enderecos.remove(endereco)
 
 # Deleta o cliente da lista
-def deleteClient(client):
+def deleteCliente(client):
     clients.remove(client)
 
 # Rotas para sensores

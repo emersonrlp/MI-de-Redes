@@ -11,7 +11,7 @@ UDP_PORT = 7778         # Porta UDP
 MESSAGE = b'Hello, TCP Server!'
 can_send = True
 
-def generate_temperature():
+def gerar_temperatura():
     return round(random.uniform(20, 30), 2)  # Gera um número aleatório entre 20 e 30 com duas casas decimais
 
 def receber_mensagem_tcp():
@@ -53,7 +53,7 @@ def enviar_mensagem_udp():
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp_socket:
                 while True:
                     if can_send == True:
-                        temperature = generate_temperature()
+                        temperature = gerar_temperatura()
                         MESSAGE = str(temperature) + '°'
                     else:
                         MESSAGE = 'Sensor desligado'
