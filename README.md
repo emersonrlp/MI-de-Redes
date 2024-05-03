@@ -13,17 +13,20 @@
     O projeto funciona da seguinte forma:
         <ol>
             <li>O broker inicializa o servidor TCP, o servidor UDP e a API para poder trocar mensagens com os dispositivos e com os clientes.</li>
-            <li>O dispositivo tenta se conectar ao servidor para poder receber mensagens TCP e envia dados UDP ao broker.</li>
-            <li>O cliente comunica com a API as solicitações que ela deseja fazer ao broker.</li>
+            <li>O dispositivo tenta se conectar ao servidor para poder receber mensagens TCP e envia dados UDP periodicamente ao broker.</li>
+            <li>O cliente comunica com a API as solicitações que ele deseja fazer ao broker.</li>
             <br>
             <div align="center">
                 <figure>
-                    <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/docs/Captura%20de%20tela%202024-04-24%20210107.png" alt="Descrição da Imagem">
+                    <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-04-24%20210107.png" alt="Descrição da Imagem">
                     <br>
                     <figcaption>Arquitetura do Projeto</figcaption>
                 </figure>
             </div>
         </ol>
+    <h3>Comunicação Cliente-Broker</h3>
+    Para a comunicação entre o cliente e o broker foi utilizado uma API RESTful que possui uma rota para os sensores <strong>http://localhost:8081/sensores</strong> e uma rota para as solicitações <strong>http://localhost:8081/sensores</strong>, cada uma delas possui um método <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong> e <strong>DELETE</strong> para fazer possíveis alterações nelas.
+    <h3>Comunicação Dispositivo-Broker</h3>
     <h2>Sobre o Projeto</h2>
     <h3>Cliente</h3>
     <p>Segue as funções contidas no <strong>'cliente.py'</strong></p></p>
