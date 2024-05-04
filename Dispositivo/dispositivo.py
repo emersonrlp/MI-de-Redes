@@ -38,12 +38,20 @@ def receber_mensagem_tcp():
                         s.sendall(MESSAGE)
                         time.sleep(0.5)
                         limpar_terminal()
+                        print("---------------------------------------------------")
+                        print("|              Sensor de Temperatura              |")
+                        print("---------------------------------------------------")
+                        if can_send:
+                            print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
+                        else:
+                            print(f"|status: off                   Temperatura: {gerar_temperatura()}°|")
+                        print("---------------------------------------------------")
                         print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
         except Exception as e:
             time.sleep(2)
-            print('Erro : ', e)
-            limpar_terminal()
-            print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
+            #print('Erro : ', e)
+            #limpar_terminal()
+            #print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
 
 def enviar_mensagem_udp():
     global can_send
@@ -64,13 +72,21 @@ def enviar_mensagem_udp():
                     time.sleep(0.5)
         except Exception as e:
             print('Erro ao enviar mensagem UDP:', e)
-            time.sleep(3)
-            limpar_terminal()
-            print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
+            time.sleep(2)
+            #limpar_terminal()
+            #print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
 
 def entrada():
     global can_send
     while True:
+        print("---------------------------------------------------")
+        print("|              Sensor de Temperatura              |")
+        print("---------------------------------------------------")
+        if can_send:
+            print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
+        else:
+            print(f"|status: off                   Temperatura: {gerar_temperatura()}°|")
+        print("---------------------------------------------------")
         user_input = input("Digite 'ligar' para ligar ou 'desligar' para desligar: \n")
         while user_input != 'ligar' and user_input != 'desligar':
             limpar_terminal()
