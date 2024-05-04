@@ -167,7 +167,8 @@
             <p>Segue as funções referentes a parte do servidor no <strong>'broker.py'</strong></p>
             <ul>
                 <li><strong>broker()</strong>, responsável por iniciar o servidor TCP e aceitar conexões dos dispositivos.</li>
-                <li><strong>receber_udp()</strong>, responsável por receber os dados dos dispositivos e manter eles atualizados no dicionário da API.</li>
+                <li><strong>receber_udp()</strong>, responsável por receber os dados dos dispositivos.</li>
+                <li><strong>atualizar_dados()</strong>, responsável por manter os dados atualizados no dicionário da API</li>
                 <li><strong>tratamento_mensagens()</strong>, responsável por verificar se tem alguma solicitação pendente de um cliente para um dispositivo para repassá-lo ao dispositivo.</li>
                 <li><strong>remover_solicitação()</strong>, responsável por remover uma solicitação no dicionário da API.</li>
                 <li><strong>obter_lista_solicitações()</strong>, responsável por pegar a lista de dicionários da API.</li>
