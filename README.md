@@ -71,6 +71,26 @@
             </figure>
         </div>
     <br>
+    <h2>Interface do Dispositivo</h2>
+    Antes de falar da interface, vale ressaltar que o dispositivo mensionado é um sensor de temperatura que faz médições periódicas de temperatura em graus célsius e manda para o broker caso o dispositivo esteje ligado.
+    <p>A figuras as seguir mostram a interface CLI do dispositivo ligado e desligado que permite ao usuário ligar ou desligar o dispositivo.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-03%20232415.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Interface do Dispositivo ligado</figcaption>
+            </figure>
+        </div>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-03%20230711.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Interface do Dispositivo desligado</figcaption>
+            </figure>
+        </div>
+    <br>
     <h2>Sobre o Desempenho</h2>
     <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Fila e também uma função expecífica do python chamada de timeout().</p>
     <p>Sobre o uso de fila, ele foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
