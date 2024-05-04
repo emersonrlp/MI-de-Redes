@@ -44,7 +44,7 @@ def receber_mensagem_tcp():
                         if can_send:
                             print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
                         else:
-                            print(f"|status: off                   Temperatura: {gerar_temperatura()}°|")
+                            print(f"|status: off                  Temperatura: default|")
                         print("---------------------------------------------------")
                         print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
         except Exception as e:
@@ -85,7 +85,7 @@ def entrada():
         if can_send:
             print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
         else:
-            print(f"|status: off                   Temperatura: {gerar_temperatura()}°|")
+            print(f"|status: off                  Temperatura: default|")
         print("---------------------------------------------------")
         user_input = input("Digite 'ligar' para ligar ou 'desligar' para desligar: \n")
         while user_input != 'ligar' and user_input != 'desligar':
