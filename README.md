@@ -46,11 +46,43 @@
         </div>
     <br>
     <p>Basicamente o que é feito quando chega um dado novo ao broker pelo dispositivo é que o dado é atualizado de acordo com o endereço IP do dispositivo no dicionário, para que o cliente possua o dado mais atualizado caso solicite esse dado por solicitação pela rota <strong>http://localhost:8081/sensores</strong>, já quando o cliente manda uma solicitação para a rota <strong>http://localhost:8081/solicitacoes</strong>, ela é verificada pelo broker e então repassada para o dispositivo solicitado.</p>
+    <p>Segue uma figura ilustrativa sobre essa troca de mensagens.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-03%20210254.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Comunicação Cliente-Broker</figcaption>
+            </figure>
+        </div>
+    <br>
     <h3>Comunicação Dispositivo-Broker</h3>
         <p>Para a comunicação entre o dispositivo e o broker foi utilizados dois protocolos, o TCP para envio de comandos/solicitações do broker para o dispositivo e o UDP para envio de dados do dispositivo para o broker.</p>
         <p>Mas, para que utilizar dois protocolos diferentes?</p>
         <p><strong>TCP</strong>, o protocolo de comunicação TCP foi utilizado no projeto para o envio de comandos/solicitações para os dispositivos porque é necessário garantir que aqueles dados foram entregues com sucesso, o que não é garantido pelo protocolo UDP.</p>
         <p><strong>UDP</strong>, o protocolo de comunicação UDP foi utilizado no projeto porque é preciso mandar dados do dispositivo para o broker de maneira rápida e periódica sem se importar tanto se o dado chegou inteiro, já que será enviado novamente em seguida.</p>
+    <p>Segue uma figura ilustrativa sobre essa troca de mensagens.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-03%20210608.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Comunicação Dispositivo-Broker</figcaption>
+            </figure>
+        </div>
+    <br>
+    <h2>Sobre o Desempenho</h2>
+    <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Fila e também uma função expecífica do python chamada de timeout().</p>
+    <p>Sobre o uso de fila, ele foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
+    <p>Já sobre o uso de Threads, é mais complicado, visto que são utilizados threads tanto no dispositivo quanto no broker.</p>
+    <ul>
+        <p>-Dispositivo, nele é utilizado Threads para receber mensagens TCP, enviar dados UDP e esperar por uma entrada do usuário no dispositivo para caso ele deseje desligar ou ligar manualmente o sensor simultaneamente.</p>
+        <p>-Broker, é utilizado Threads nele para garantir todo dado que chegar da API e do Dispositivo será encaminhado para seu respectivo destino, não havendo perda de dados.</p>    
+    </ul>
+    <p>Por fim, o uso da função timeout() foi utilizada somente no cliente, visto que quando o broker desconectava e o cliente tentava fazer uma solicitação havia uma demora para saber se o broker estava desconectado e a função garante que se o broker demorar mais de 1s para responder é porque ele está desconectado.</p>
+    <h2>Confiabilidade da Solução</h2>
+    <p>Durante o desenvolvimento do projeto foi discutido sobre a importância dos dispositivos e clientes conectados ao broker não pararem de funcionar completamente após o fim da sua execução ou quando por algum motivo a conexão internet da máquina que esteje rodando o broker caia, pois se o broker está ou não conectado não deveria afetar a execução nem dos Clientes e nem dos Dispositivos. Para isso, foi-se utilizado uma verificação tanto nos Dispositivos quanto nos clientes para saber se o broker está funcionando, para que caso não esteja os Dispositivos continuem tentando estabelecer a conexão e o Cliente informe que não é possível realizar uma solicitação ao broker.</p>
+    <p>Além disso, foi importante fazer um tratamento de erro para as trocas de mensagens entre o Dispositivo-Broker e Cliente-Broker para que mesmo se um deles pare de funcionar, não afete o funcionamento do resto, ou seja, mesmo se um deles parar de funcionar o resto vai continuar rodando  para caso a conexão seja restabelecida</p>
     <h2>Sobre o Projeto</h2>
     <h3>Cliente</h3>
     <p>Segue as funções contidas no <strong>'cliente.py'</strong></p></p>
