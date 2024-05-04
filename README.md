@@ -91,6 +91,44 @@
             </figure>
         </div>
     <br>
+    <h2>Interface do Cliente</h2>
+    <p>Como permitido, a interface para a comunicação entre o cliente e o broker foi feita via interface de linha de comando (CLI).</p>
+    <p>A principio, ao iniciar o cliente irá aparecer uma tela com um menu com o que pode ser solicitado ao broker, o usuário deve escolher primeiro o comando e depois o número do sensor que ele deseja fazer a solicitação.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-04%20122426.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Menu da Interface</figcaption>
+            </figure>
+        </div>
+    <br>
+    <p>A seguir, temos as imagens de quando é solicitado ver a temperatura de um determinado sensor, quando é solicitado ver a temperatura de um sensor sendo que ele está desligado e quando há uma falha na comunicação entre cliente e broker, respectivamente.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-04%20122501.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Solicitação de temperatura com o dispositivo ligado</figcaption>
+            </figure>
+        </div>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-04%20122818.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Solicitação de temperatura com o dispositivo desligado</figcaption>
+            </figure>
+        </div>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-04%20122647.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Falha ao se comunicar com o broker</figcaption>
+            </figure>
+        </div>
+    <br>
     <h2>Sobre o Desempenho</h2>
     <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Fila e também uma função expecífica do python chamada de timeout().</p>
     <p>Sobre o uso de fila, ele foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
