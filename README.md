@@ -138,8 +138,8 @@
         </div>
     <br>
     <h2>Sobre o Desempenho</h2>
-    <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Fila e também uma função expecífica do python chamada de timeout().</p>
-    <p>Sobre o uso de fila, ele foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
+    <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Filas e também uma função expecífica do python chamada de timeout().</p>
+    <p>Sobre o uso de fila, ela foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
     <p>Já sobre o uso de Threads, é mais complicado, visto que são utilizados threads tanto no dispositivo quanto no broker.</p>
     <ul>
         <p>-Dispositivo, nele é utilizado Threads para receber mensagens TCP, enviar dados UDP e esperar por uma entrada do usuário no dispositivo para caso ele deseje desligar ou ligar manualmente o sensor simultaneamente.</p>
