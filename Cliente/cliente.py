@@ -25,12 +25,16 @@ def menu():
                             limpar_terminal()
                             print("----------------------------------------------------------------------------\n                            Lista de Sensores\n----------------------------------------------------------------------------")
                             for i in sensores:
-                                print(f"       {i}")
-                            print("----------------------------------------------------------------------------\n")
+                                if i["temperatura"] != "Sensor desligado":
+                                    print(f'Data: {i["data"]["dia"]}/{i["data"]["mes"]}/{i["data"]["ano"]} às {i["data"] ["hora"]}:{i["data"]["minutos"]}:{i["data"]["segundos"]}\nSensor: {i["Sensor"]}\nId: {i["id"]}\nTemperatura: {i["temperatura"]}')
+                                else:
+                                    print(f'Data: {i["data"]["dia"]}/{i["data"]["mes"]}/{i["data"]["ano"]} às {i["data"] ["hora"]}:{i["data"]["minutos"]}:{i["data"]["segundos"]}\nSensor: {i["Sensor"]}\nId: {i["id"]}\nStatus: off')
+                                print("----------------------------------------------------------------------------")
+                            print()
                             input("Precione enter para voltar ao menu!")
                             limpar_terminal()
                     except Exception as e:
-                        print("Broker desconectado!")
+                        print("Não foi possível se comunicar com o broker!")
                         input("\nPrecione enter para voltar ao menu!") 
                         limpar_terminal()
                 else:
@@ -56,10 +60,13 @@ def menu():
                 sensores = obter_lista_sensores()
                 for i in sensores:
                     if i["id"] == num2:
-                        print(f"\nTemperatura do {num2}° sensor = {i['temperatura']}")
+                        if i["temperatura"] == "Sensor desligado":
+                            print(f"\nStatus do {num2}° sensor = {i['temperatura']}")
+                        else:
+                            print(f"\nTemperatura do {num2}° sensor = {i['temperatura']}")
                         input("\nPrecione enter para voltar ao menu!")
             except Exception as e:
-                print("Broker desconectado!")
+                print("Não foi possível se comunicar com o broker!")
                 input("\nPrecione enter para voltar ao menu!") 
         elif num1 == 3:
             try:
@@ -69,7 +76,7 @@ def menu():
                 # Enviar uma solicitação POST para a API Flask para criar o novo sensor
                 response = requests.post(url_solicitacoes, json=novo_sensor, timeout=1)
             except Exception as e:
-                print("Broker desconectado!")   
+                print("Não foi possível se comunicar com o broker!")   
                 input("\nPrecione enter para voltar ao menu!") 
         else:
             try:
@@ -81,7 +88,7 @@ def menu():
                 
                 limpar_terminal()
             except Exception as e:
-                print("Broker desconectado!")
+                print("Não foi possível se comunicar com o broker!")
                 input("\nPrecione enter para voltar ao menu!")
                 
 def obter_lista_sensores():

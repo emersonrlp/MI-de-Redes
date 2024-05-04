@@ -4,6 +4,7 @@ import socket
 import requests
 import time
 import os
+import datetime
 
 url = "http://127.0.0.1:8081/sensores"
 #Lista de endereços
@@ -56,18 +57,41 @@ def receber_udp(server_udp):
     while True:
         # Recebe dados do cliente UDP
         data_udp, addr_udp = server_udp.recvfrom(1024)
-        # Verificar se o valor desejado está presente em cada dicionário
-        for i in enderecos:
-            if addr_udp[0] == i:
-                temp = data_udp.decode()
-                dados_atualizados = {"Sensor": addr_udp[0], "temperatura": temp}
-                ID = enderecos.index(i) + 1
-                ID = str(ID)
-                url_sensor = 'http://127.0.0.1:8081/sensores/'+ ID
-                response = requests.put(url_sensor, json=dados_atualizados)
-        print('\nConectado por UDP:', addr_udp)
-        print('Mensagem recebida do cliente UDP:', data_udp.decode())
-        time.sleep(0.5)
+        threading.Thread(target=atualizar_dado, args=[data_udp, addr_udp]).start()
+
+def data_atual():
+    agora = datetime.datetime.now()
+    ano = agora.year
+    mes = agora.month
+    dia = agora.day
+    hora = agora.hour
+    minutos = agora.minute
+    segundos = agora.second
+    
+    horario= {
+        "ano": ano,
+        "mes": mes,
+        "dia": dia,
+        "hora": hora,
+        "minutos": minutos,
+        "segundos": segundos
+    }
+    
+    return horario
+
+def atualizar_dado(data_udp, addr_udp):
+    # Verificar se o valor desejado está presente em cada dicionário
+    for i in enderecos:
+        if addr_udp[0] == i:
+            temp = data_udp.decode()
+            dados_atualizados = {"Sensor": addr_udp[0], "temperatura": temp, "data": data_atual()}
+            ID = enderecos.index(i) + 1
+            ID = str(ID)
+            url_sensor = 'http://127.0.0.1:8081/sensores/'+ ID
+            response = requests.put(url_sensor, json=dados_atualizados)
+    print('\nConectado por UDP:', addr_udp)
+    print('Mensagem recebida do cliente UDP:', data_udp.decode())
+    time.sleep(0.5)
 def tratamento_mensagens(client, endereco):
     while True:
         try:

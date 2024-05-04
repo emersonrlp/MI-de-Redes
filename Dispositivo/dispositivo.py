@@ -42,7 +42,7 @@ def receber_mensagem_tcp():
                         print("|              Sensor de Temperatura              |")
                         print("---------------------------------------------------")
                         if can_send:
-                            print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
+                            print("|status: on                    Temperatura: {:.2f}°|".format(gerar_temperatura()))
                         else:
                             print(f"|status: off                  Temperatura: default|")
                         print("---------------------------------------------------")
@@ -83,7 +83,7 @@ def entrada():
         print("|              Sensor de Temperatura              |")
         print("---------------------------------------------------")
         if can_send:
-            print(f"|status: on                    Temperatura: {gerar_temperatura()}°|")
+            print("|status: on                    Temperatura: {:.2f}°|".format(gerar_temperatura()))
         else:
             print(f"|status: off                  Temperatura: default|")
         print("---------------------------------------------------")
