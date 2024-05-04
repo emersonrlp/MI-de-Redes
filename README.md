@@ -103,7 +103,15 @@
             </figure>
         </div>
     <br>
-    <p>A seguir, temos as imagens de quando é solicitado ver a temperatura de um determinado sensor, quando é solicitado ver a temperatura de um sensor sendo que ele está desligado e quando há uma falha na comunicação entre cliente e broker, respectivamente.</p>
+    <p>A seguir, temos as imagens de quando é solicitado ver todos os dispositivos já conectados, a temperatura de um determinado sensor, a temperatura de um sensor sendo que ele está desligado e quando há uma falha na comunicação entre cliente e broker, respectivamente.</p>
+    <br>
+        <div align="center">
+            <figure>
+                <img src="https://github.com/emersonrlp/MI-de-Redes/blob/main/IMG/Captura%20de%20tela%202024-05-04%20122617.png" alt="Descrição da Imagem">
+                <br>
+                <figcaption>Solicitação para ver todos os dispositivos já conectados</figcaption>
+            </figure>
+        </div>
     <br>
         <div align="center">
             <figure>
