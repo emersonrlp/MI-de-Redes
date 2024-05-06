@@ -34,8 +34,8 @@ def receber_mensagem_tcp():
                         elif data.decode() == 'ligar' and can_send == False:
                             MESSAGE = b'Sensor ligando'
                             can_send = True
-                        # Envia mensagem para o servidor
-                        s.sendall(MESSAGE)
+                        # Envia mensagem para o servido
+                        
                         time.sleep(0.5)
                         limpar_terminal()
                         print("---------------------------------------------------")
@@ -49,9 +49,7 @@ def receber_mensagem_tcp():
                         print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
         except Exception as e:
             time.sleep(2)
-            #print('Erro : ', e)
-            #limpar_terminal()
-            #print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
+
 
 def enviar_mensagem_udp():
     global can_send
@@ -68,13 +66,12 @@ def enviar_mensagem_udp():
                     
                     # Envia mensagem para o servidor
                     udp_socket.sendto(MESSAGE.encode(), (HOST, UDP_PORT))
-                    #print('Mensagem enviada com sucesso via UDP')
+                    
                     time.sleep(0.5)
         except Exception as e:
             print('Erro ao enviar mensagem UDP:', e)
             time.sleep(2)
-            #limpar_terminal()
-            #print("Digite 'ligar' para ligar ou 'desligar' para desligar: ")
+
 
 def entrada():
     global can_send

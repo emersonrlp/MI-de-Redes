@@ -23,12 +23,12 @@ def broker():
         server_tcp.bind(('0.0.0.0', 7777))
         server_tcp.listen()
     except:
-        return print('\nNão foi possível iniciar o servidor tcp!\n')
+        return 
 
     try:
         server_udp.bind(('0.0.0.0', 7778))
     except:
-        return print('\nNão foi possível iniciar o servidor udp!\n')
+        return 
     
     while True:
         client, addr = server_tcp.accept()
@@ -90,7 +90,7 @@ def atualizar_dado(data_udp, addr_udp):
             url_sensor = 'http://127.0.0.1:8081/sensores/'+ ID
             response = requests.put(url_sensor, json=dados_atualizados)
     print('\nConectado por UDP:', addr_udp)
-    print('Mensagem recebida do cliente UDP:', data_udp.decode())
+    
     time.sleep(0.5)
 def tratamento_mensagens(client, endereco):
     while True:
