@@ -137,6 +137,7 @@
             </figure>
         </div>
     <br>
+    <p>Lembrando que qualquer uma das solicitações escolhidas passará os dados em formato de dicionário para a API.</p>
     <h2>Sobre o Desempenho</h2>
     <p>Para melhorar o tempo de resposta foi-se utilizado Threads, Filas e também uma função expecífica do python chamada de timeout().</p>
     <p>Sobre o uso de fila, ela foi de crucial importância sobretudo para guardar os dados da API e para sempre pegar a primeira solicitação da rota <strong>http://localhost:8081/solicitacoes</strong>, já que não exite prioridade entre as solicitações feitas pelos clientes.</p>
@@ -199,6 +200,9 @@
             <li><strong>excluir_solicitacao()</strong>, responsável por remover uma solicitação da aplicação.</li>
         </ul>
     </ul>
+    <h2>Conclusão</h2>
+    <p>Enfim, conclui-se que o projeto entregue abrange todos os requisitos solicitados no problema, abordando o uso de threads, criação de um broker para troca de mensagens, criação de uma dispositivo/atuador, uso de uma API RESTful , uso de docker para facilitar a execução do sistema por terceiros, o uso do software Insomnia para testes nas rotas e por fim o uso dos protocolos TCP e UDP para troca de mensagens.</p>
+    <p>Ademais, vale mencionar possíveis alterações para uma melhor usabilidade da interface do cliente como o uso de React para o front-end, adição de outros tipos de dispositivos ou até mesmo fazer uso de dispositivos reais.</p>
   <h2>Como Executar o Projeto</h2> 
     <p>Siga os seguintes passos para a execução do projeto:</p>
     <ul>
