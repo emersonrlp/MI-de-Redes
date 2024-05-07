@@ -211,7 +211,7 @@
       </li>
       <li>execute o seguinte comando com o terminal nas pastas Cliente, Dispositivo e Broker: <strong>'docker build -t nome_do_arquivo .'</strong></li>
       <li>digite <strong>'docker images'</strong> para ver se as imagens docker foram criadas com sucesso.</li>
-      <li>por fim, execute o programa usando o comando <strong>'docker run --network='host' -it -e IP_ADDRESS=ip_do_broker nome_da_imagem'</strong> para executar as imagens do dispositivo e do cliente criadas e <strong>'docker run --network='host' -it nome_da_imagem'</strong> para executar o broker.</li>
+      <li>por fim, execute o programa usando o comando <strong>'docker run --network='host' -it -e IP_ADDRESS=ip_do_broker nome_da_imagem'</strong> para executar as imagens do dispositivo e do cliente criadas e <strong>'docker run --network='host' -it nome_da_imagem'</strong> para executar a imagem do broker.</li>
    </ul>
   <p>tendo feito isso, é possível fazer solicitações por meio do cliente via CLI pedindo para que forneça a temperatura, desligue ou ligue um determinado dispositivo.</p>    
     <p><strong>Obs.:</strong> é necessário ter o docker instalado na máquina que deseja executar o código.</p>
