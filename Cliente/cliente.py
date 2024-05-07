@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import os
 import requests
 
-ip = '192.168.1.106'
+ip= os.getenv('IP_ADDRESS')
 url = f"http://{ip}:8081/sensores"
 url_solicitacoes = f"http://{ip}:8081/solicitacoes"
 

@@ -5,7 +5,7 @@ import threading
 import os
 
 # Configurações do servidor
-HOST = '192.168.1.106'  # Endereço IP do servidor
+HOST = os.getenv('IP_ADDRESS')  # Endereço IP do servidor
 PORT = 7777             # Porta a ser usada
 UDP_PORT = 7778         # Porta UDP
 MESSAGE = b'Hello, TCP Server!'

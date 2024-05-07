@@ -8,6 +8,9 @@ WORKDIR /app
 COPY dispositivo.py .
 COPY requirements.txt .
 
+# Defina a variável de ambiente IP
+ENV IP_ADDRESS 192.168.1.100
+
 # Instale as dependências (se aplicável)
 RUN pip install --no-cache-dir -r requirements.txt
 
